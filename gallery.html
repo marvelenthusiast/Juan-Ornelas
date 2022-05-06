@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" type="x-con" href="images/favicon.png">
+        <meta name="viewport" content="width=device-width,intial-scale=1.0">
+        <title>Juan Ornelas Portfolio: Gallery</title>
+        <meta name="description" content="This is my Gallery page I made for my web fundamentals class">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <nav> <!-- Top Navigation Menu -->
+            <div class="topnav">
+                <a href="index.html" target="blank">
+                  <img src="images/leaflogo.png" alt="logo" height="100" width="320">
+                </a>
+                <!-- Navigation links (hidden by default) -->
+                  <div id="myLinks">
+                      <a href="javascript.html">Video Game</a>
+                      <a href="multimedia.html">Multimedia</a>
+                      <a href="about-me.html">About</a>
+                      <a href="gallery.html">Gallery</a>
+                  </div>
+                  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                  <i class="fa fa-bars"></i>
+                  </a>
+              </div>
+              <script>
+              /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+                  function myFunction() {
+                      var x = document.getElementById("myLinks");
+                      if (x.style.display === "block") {
+                          x.style.display = "none";
+                      } else {
+                          x.style.display = "block";
+                      }
+                  }
+              </script>
+        </nav>
+        <header>
+            <h2>Gallery</h2>
+        </header>
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>This gallery containes images of projects and lessons that I have worked on throughout my first year at Saint Paul College. They are not the best, however I plan on
+                            improving my skils and creating greater projects to use in my future portfolio before I transfer to another college.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="gallery">
+                            <div class="preview">
+                                <img id="preview" src="images/train6.jpg" 
+                                style="display:block;margin:0 auto;" alt=""  height="600" width="800"/>
+                            </div>
+                            <div class="gallery-thumbnails" style="margin:0 auto;text-align:center">
+                                <img onclick="document.getElementById('preview').src=document.getElementById('img1').src" id="img1" src="images/bike3.jpg" alt="" />
+                                <img onclick="document.getElementById('preview').src= document.getElementById('img2').src;" id="img2" src="images/hawaii1.jpg" alt=""  />
+                                <img onclick="document.getElementById('preview').src = document.getElementById('img3').src;" id="img3" src="images/iliedcover2.jpg" alt="" />
+                                <img onclick="document.getElementById('preview').src = document.getElementById('img4').src;" id="img4" src="images/magazine4.jpg" alt="" />
+                                <img onclick="document.getElementById('preview').src = document.getElementById('img5').src;" id="img5" src="images/warrior5.jpg" alt=""  />
+                                <img onclick="document.getElementById('preview').src = document.getElementById('img6').src;" id="img6" src="images/merge9.jpg" alt="" />
+                                <img onclick="document.getElementById('preview').src = document.getElementById('img7').src;" id="img7" src="images/panflet7.jpg" alt="" />
+                                <img onclick="document.getElementById('preview').src = document.getElementById('img8').src;" id="img8" src="images/panflet8.jpg" alt="" />
+                            </div>
+                        </div>                            
+                    </div>
+                </div>   
+            </div>
+        </main>
+        <footer>
+            <div class="row footer1000">
+              <div class="col-sm-6">
+                  <h4>Portfolio</h4>
+                  <p>
+                      This portfolio was made as a final project for my web fundamentals class. This project was made by
+                      using HTML, CSS. Bootstrap, Javascript, and jquery.
+                  </p>
+              </div>
+              <div class="col-sm-6">
+                  <h4>Get int touch with me!</h4>
+                  <a href="mailto:juanornelas003@gmail.com">
+                      <p>
+                          <i class="fa fa-envelope-o" aria-hidden="true"> Email </i>
+                      </p>
+                  </a>
+                  <a href="https://www.linkedin.com/">
+                      <p>
+                          <i class="fa fa-linkedin" aria-hidden="true"> linkedin </i>
+                      </p>
+                  </a>
+              </div>
+              <div class="col-sm-6"></div>
+          </div>
+          <div class="footer-bottom">
+              <small>&copy; Copyright Juan Ornelas.</small><br>
+          </div>
+          </footer>
+        <!--jQuery, Popper, and Bootstrap Javascript files-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

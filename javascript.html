@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" type="x-con" href="images/favicon.png">
+        <meta name="viewport" content="width=device-width,intial-scale=1.0">
+        <title>Juan Ornelas Portfolio: Vide Game</title>
+        <meta name="description" content="Hello my name is Juan Ornelas and this is my Video Game page I made for my Web Fundamentals class">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css">
+        <style>
+            canvas {
+                border: 2px solid #1c5c53;
+                background-color: #000000;
+                background-image: url(https://c.pxhere.com/images/1a/22/4382c349e807087e67b1f8f73000-1593762.jpg!d);
+            }
+        </style>
+    </head>
+    <body onload="startGame()">
+        <nav> <!-- Top Navigation Menu -->
+            <div class="topnav">
+                <a href="index.html" target="blank">
+                  <img src="images/leaflogo.png" alt="logo" height="100" width="320">
+                </a>
+                <!-- Navigation links (hidden by default) -->
+                  <div id="myLinks">
+                      <a href="javascript.html">Video Game</a>
+                      <a href="multimedia.html">Multimedia</a>
+                      <a href="about-me.html">About</a>
+                      <a href="gallery.html">Gallery</a>
+                  </div>
+                  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+                  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                  <i class="fa fa-bars"></i>
+                  </a>
+              </div>
+              <script>
+              /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+                  function myFunction() {
+                      var x = document.getElementById("myLinks");
+                      if (x.style.display === "block") {
+                          x.style.display = "none";
+                      } else {
+                          x.style.display = "block";
+                      }
+                  }
+              </script>
+        </nav>
+        <header>
+            <h2>Video Game</h2>
+        </header>
+        <main> <!--This is the main section-->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <p>This is a JavaScript game from W3Schools I worked on, I then changed it to my liking to better fit
+                            my vision of this game, by adding a background image and changing the obstacles colors. It was a great introduction to Javascript 
+                            and a great way to perfect my skill on cusyomzing and working around other people code.
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- This is the HTMLcode. It will be in the <main> section of your website --> 
+            <div id="game" ></div>
+            <div class="game-controls">
+               <button class="myButton" onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">JUMP</button>
+               <a href=""><button class="mybutton">PLAY AGAIN</button></a>
+            </div>
+         
+         <!-- This is the JavaScript for the game-->
+            <script>
+               var myGamePiece;
+               var myObstacles = [];
+               var myScore;
+               
+               function startGame() {
+                   myGamePiece = new component(30, 30, "red", 10, 120);
+                   myGamePiece.gravity = 0.02;
+                   myScore = new component("29px", "Consolas", "red", 420, 40, "text");
+                   myGameArea.start();
+               }
+               
+               var myGameArea = {
+                   canvas : document.createElement("canvas"),
+                   start : function() {
+                       this.canvas.width = 640;
+                       this.canvas.height = 360;
+                       this.context = this.canvas.getContext("2d");
+                       var myGame = document.getElementById("game");
+                       myGame.insertBefore(this.canvas, myGame.childNodes[0]);        
+                       this.frameNo = 0;
+                       this.interval = setInterval(updateGameArea, 20);
+                    },
+                   clear : function() {
+                       this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                   }
+               }
+               
+               function component(width, height, color, x, y, type) {
+                   this.type = type;
+                   this.score = 0;
+                   this.width = width;
+                   this.height = height;
+                   this.speedX = 0;
+                   this.speedY = 0;    
+                   this.x = x;
+                   this.y = y;
+                   this.gravity = 0;
+                   this.gravitySpeed = 0;
+                   this.bounce = 0.6;
+                   this.update = function() {
+                       ctx = myGameArea.context;
+                       if (this.type == "text") {
+                           ctx.font = this.width + " " + this.height;
+                           ctx.fillStyle = color;
+                           ctx.fillText(this.text, this.x, this.y);
+                       } else {
+                           ctx.fillStyle = color;
+                           ctx.fillRect(this.x, this.y, this.width, this.height);
+                       }
+                   }
+                   this.newPos = function() {
+                       this.gravitySpeed += this.gravity;
+                       this.x += this.speedX;
+                       this.y += this.speedY + this.gravitySpeed;
+                       this.hitBottom();
+                   }
+                   this.hitBottom = function() {
+                       var rockbottom = myGameArea.canvas.height - this.height;
+                       if (this.y > rockbottom) {
+                           this.y = rockbottom;
+                           this.gravitySpeed = -(this.gravitySpeed * this.bounce);
+                       }
+                    }
+                   this.crashWith = function(otherobj) {
+                       var myleft = this.x;
+                       var myright = this.x + (this.width);
+                       var mytop = this.y;
+                       var mybottom = this.y + (this.height);
+                       var otherleft = otherobj.x;
+                       var otherright = otherobj.x + (otherobj.width);
+                       var othertop = otherobj.y;
+                       var otherbottom = otherobj.y + (otherobj.height);
+                       var crash = true;
+                       if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+                           crash = false;
+                       }
+                       return crash;
+                   }
+               }
+               
+               function updateGameArea() {
+                   var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+                   for (i = 0; i < myObstacles.length; i += 1) {
+                       if (myGamePiece.crashWith(myObstacles[i])) {
+                           return;
+                       } 
+                   }
+                   myGameArea.clear();
+                   myGameArea.frameNo += 1;
+                   if (myGameArea.frameNo == 1 || everyinterval(150)) {
+                       x = myGameArea.canvas.width;
+                       minHeight = 20;
+                       maxHeight = 200;
+                       height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+                       minGap = 50;
+                       maxGap = 200;
+                       gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+                       myObstacles.push(new component(20, height, "#000000", x, 0));
+                       myObstacles.push(new component(20, x - height - gap, "#000000", x, height + gap));
+                   }
+                   for (i = 0; i < myObstacles.length; i += 1) {
+                       myObstacles[i].x += -1;
+                       myObstacles[i].update();
+                   }
+                   myScore.text="SCORE: " + myGameArea.frameNo;
+                   myScore.update();
+                   myGamePiece.newPos();
+                   myGamePiece.update();
+               }
+               
+               function everyinterval(n) {
+                   if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+                   return false;
+               }
+               
+               function accelerate(n) {
+                   myGamePiece.gravity = n;
+               }
+            </script>         
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="row footer1000">
+              <div class="col-sm-6">
+                  <h4>Portfolio</h4>
+                  <p>
+                      This portfolio was made as a final project for my web fundamentals class. This project was made by
+                      using HTML, CSS. Bootstrap, Javascript, and jquery.
+                  </p>
+              </div>
+              <div class="col-sm-6">
+                  <h4>Get int touch with me!</h4>
+                  <a href="mailto:juanornelas003@gmail.com">
+                      <p>
+                          <i class="fa fa-envelope-o" aria-hidden="true"> Email </i>
+                      </p>
+                  </a>
+                  <a href="https://www.linkedin.com/">
+                      <p>
+                          <i class="fa fa-linkedin" aria-hidden="true"> linkedin </i>
+                      </p>
+                  </a>
+              </div>
+              <div class="col-sm-6"></div>
+          </div>
+          <div class="footer-bottom">
+              <small>&copy; Copyright Juan Ornelas.</small><br>
+          </div>
+          </footer>
+        <!--jQuery, Popper, and Bootstrap Javascript files-->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>

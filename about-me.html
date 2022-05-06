@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="shortcut icon" type="x-con" href="images/favicon.png">
+        <title>Juan Ornelas Vazquez Portfolio: About Me</title>
+        <meta name="description" content="This is my About page I made for my web fundamentals class">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="style.css"/>
+    </head>
+    <body>
+        <nav>
+          <div class="topnav">
+            <a href="index.html" target="blank">
+              <img src="images/leaflogo.png" alt="logo" height="100" width="320">
+            </a>
+            <!-- Navigation links (hidden by default) -->
+              <div id="myLinks">
+                  <a href="javascript.html">Video Game</a>
+                  <a href="multimedia.html">Multimedia</a>
+                  <a href="about-me.html">About</a>
+                  <a href="gallery.html">Gallery</a>
+              </div>
+              <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+              <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+              <i class="fa fa-bars"></i>
+              </a>
+          </div>
+          <script>
+          /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
+              function myFunction() {
+                  var x = document.getElementById("myLinks");
+                  if (x.style.display === "block") {
+                      x.style.display = "none";
+                  } else {
+                      x.style.display = "block";
+                  }
+              }
+          </script>
+        </nav>
+        <header>
+          <div class="home-hero">
+            <img src="images/abouthero.png" height="100" wodth="100" alt="header of about page" class="img-fluid">
+          </div>
+        </header>
+        <main>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12">
+                <!--This is the main section-->
+            <img src="https://images.freeimg.net/rsynced_images/stickman-310589_1280.png" height="200" width="200" 
+            alt="stick figure representing me (Juan Ornelas)" class="stickfigure">
+            <p>
+                Hi! My name is Juan Ornelas, I am a college student at Saint Paul College. I am currently attending Saint Paul College, I hope to receive a AS in Computer Graphics and Visualizations.
+                I made this website as a portfolio of my skills developing websites.<br>
+                I have taken the following classes at Saint Paul College:
+                <ul>
+                    <li>Photoshop</li>
+                    <li>InDesign</li>
+                    <li>Web Design</li>
+                    <li>Web Fundamentals, where I learned HTML and CSS</li>
+                </ul>
+                I plan on taking other Digital Graphics courses and a 3D animation course to further cultivate my knowledge on Graphics Design.
+            </p>
+            <br>
+            <br>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer>
+          <div class="row footer1000">
+            <div class="col-sm-6">
+                <h4>Portfolio</h4>
+                <p>
+                    This portfolio was made as a final project for my web fundamentals class. This project was made by
+                    using HTML, CSS. Bootstrap, Javascript, and jquery.
+                </p>
+            </div>
+            <div class="col-sm-6">
+                <h4>Get int touch with me!</h4>
+                <a href="mailto:juanornelas003@gmail.com">
+                    <p>
+                        <i class="fa fa-envelope-o" aria-hidden="true"> Email </i>
+                    </p>
+                </a>
+                <a href="https://www.linkedin.com/">
+                    <p>
+                        <i class="fa fa-linkedin" aria-hidden="true"> linkedin </i>
+                    </p>
+                </a>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+        <div class="footer-bottom">
+            <small>&copy; Copyright Juan Ornelas.</small><br>
+        </div>
+        </footer>
+      <!--jQuery, Popper, and Bootstrap Javascript files-->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+</html>
